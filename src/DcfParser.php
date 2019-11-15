@@ -11,20 +11,12 @@ namespace makowskid\DcfParser;
  */
 class DcfParser
 {
-
-    /**
-     * @var  \makowskid\DcfParser\Config
-     */
-    private $config;
-
     /**
      * DcfParser constructor.
      *
-     * @param \makowskid\DcfParser\Config $config
      */
-    public function __construct(Config $config)
+    public function __construct()
     {
-        $this->config = $config;
     }
 
     /**

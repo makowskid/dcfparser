@@ -58,14 +58,14 @@ Parsing result:
 
 ##### Installation Steps
 
-1. `git clone https://github.com/makowskid/dcfparser.git`
-2. `composer update`
+1. `composer require makowskid/dcfparser`
+2. `composer install`
 3. make sure everything is OK by running the tests `phpunit`
 
 ## Usage
 
 ```
-$DcfParser = new DcfParser(new Config());
+$DcfParser = new DcfParser();
 $resultArray = $DcfParser->parseFile($file);
 ```
 

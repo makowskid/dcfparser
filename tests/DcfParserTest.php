@@ -2,7 +2,6 @@
 namespace makowskid\DcfParser\Tests;
 
 use PHPUnit\Framework\TestCase;
-use makowskid\DcfParser\Config;
 use makowskid\DcfParser\DcfParser;
 
 /**
@@ -37,7 +36,7 @@ Lastline: lol
 ";
         $file = 'dcfparsertest.txt';
         \file_put_contents($file, $test_content, LOCK_EX);
-        $DcfParser = new DcfParser(new Config());
+        $DcfParser = new DcfParser();
         $expected = $DcfParser->parseFile($file);
         $this->assertArrayHasKey('source',$expected);
         $this->assertArrayHasKey('section',$expected);
