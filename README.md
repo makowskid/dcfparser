@@ -64,10 +64,18 @@ Parsing result:
 
 ## Usage
 
+In Laravel:
 ```
-$DcfParser = new DcfParser();
-$resultArray = $DcfParser->parseFile($file);
+\DcfParser::parseFile('test.txt');
 ```
+
+Generic:
+```
+$parser = new \makowskid\DcfParser\DcfParser();
+$parser->parseFile('test.txt');
+```
+
+
 
 ## Test
 

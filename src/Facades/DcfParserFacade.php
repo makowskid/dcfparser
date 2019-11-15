@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author  Dawid Makowski <dawid.makowski@gmail.com>
  */
-class DcfParserFacadeAccessor extends Facade
+class DcfParserFacade extends Facade
 {
 
     /**

@@ -3,8 +3,7 @@
 namespace makowskid\DcfParser\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
-use makowskid\DcfParser\Contracts\DcfParserInterface;
-use makowskid\DcfParser\Facades\DcfParserFacadeAccessor;
+use makowskid\DcfParser\Facades\DcfParserFacade;
 use makowskid\DcfParser\DcfParser;
 
 /**
@@ -36,48 +35,14 @@ class DcfParserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Implementation Bindings
-        |--------------------------------------------------------------------------
-        */
-        $this->implementationBindings();
-
-        /*
-        |--------------------------------------------------------------------------
-        | Facade Bindings
-        |--------------------------------------------------------------------------
-        */
-        $this->facadeBindings();
-
-        /*
-        |--------------------------------------------------------------------------
-        | Registering Service Providers
-        |--------------------------------------------------------------------------
-        */
-        $this->serviceProviders();
-    }
-
-    /**
-     * Implementation Bindings
-     */
-    private function implementationBindings()
-    {
-        $this->app->bind(
-            DcfParserInterface::class,
-            DcfParser::class
-        );
-    }
-
-    /**
-     * Facades Binding
-     */
-    private function facadeBindings()
-    {
-        // Register 'DcfParser' Alias, So users don't have to add the Alias to the 'app/config/app.php'
-        $this->app->booting(function () {
+		$this->app->singleton('dcfparser', function ($app)
+		{
+			return new DcfParser();
+		});
+		
+         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('DcfParser', DcfParserFacadeAccessor::class);
+            $loader->alias('DcfParser', DcfParserFacade::class);
         });
     }
 
@@ -88,15 +53,8 @@ class DcfParserServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return ['dcfparser'];
     }
 
-    /**
-     * Registering Other Custom Service Providers (if you have)
-     */
-    private function serviceProviders()
-    {
-        // $this->app->register('...\...\...');
-    }
 
 }
