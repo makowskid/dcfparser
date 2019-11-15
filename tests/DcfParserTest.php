@@ -1,7 +1,7 @@
 <?php
-
 namespace makowskid\DcfParser\Tests;
 
+use PHPUnit\Framework\TestCase;
 use makowskid\DcfParser\Config;
 use makowskid\DcfParser\DcfParser;
 
