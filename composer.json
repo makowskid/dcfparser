@@ -1,0 +1,50 @@
+{
+  "name": "makowskid/dcfparser",
+  "description": "DcfParser - parse Debian Control Files with PHP",
+  "license": "MIT",
+  "keywords": [
+    "DCF",
+    "dcfparser"
+  ],
+  "authors": [
+    {
+      "name": "Dawid Makowski",
+      "email": "dawid.makowski@gmail.com",
+      "homepage": "https://dawidmakowski.com/",
+      "role": "Who knows?"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": "5.2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "mockery/mockery": "0.*",
+    "symfony/var-dumper": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "makowskid\\DcfParser\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "makowskid\\DcfParser\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "makowskid\\DcfParser\\ServiceProviders\\DcfParserServiceProvider"
+        ]
+    },
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "stable"
+}
