@@ -11,7 +11,6 @@ use PHPUnit_Framework_TestCase as PHPUnit;
  */
 class TestCase extends PHPUnit
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -26,5 +25,4 @@ class TestCase extends PHPUnit
     {
         parent::tearDown();
     }
-
 }

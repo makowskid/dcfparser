@@ -13,7 +13,6 @@ use makowskid\DcfParser\DcfParser;
  */
 class DcfParserTest extends TestCase
 {
-
     public function testparseFile()
     {
         $test_content = "
@@ -38,10 +37,10 @@ Lastline: lol
         \file_put_contents($file, $test_content, LOCK_EX);
         $DcfParser = new DcfParser();
         $expected = $DcfParser->parseFile($file);
-        $this->assertArrayHasKey('source',$expected);
-        $this->assertArrayHasKey('section',$expected);
-        $this->assertArrayHasKey('description',$expected);
-        $this->assertArrayHasKey('standards-version',$expected);
+        $this->assertArrayHasKey('source', $expected);
+        $this->assertArrayHasKey('section', $expected);
+        $this->assertArrayHasKey('description', $expected);
+        $this->assertArrayHasKey('standards-version', $expected);
         $this->assertContains('4.0.0', $expected);
         $this->assertContains('any', $expected);
         $this->assertContains('nothing', $expected);
@@ -49,5 +48,4 @@ Lastline: lol
         $this->assertContains("The format for the package description is a short brief summary on the first line (after the Description field). The following lines should be used as a longer, more detailed description. Each line of the long description must be preceded by a space, and blank lines in the long description must contain a single ‘.’ . following the preceding space.", $expected);
         \unlink($file);
     }
-
 }

@@ -35,12 +35,11 @@ class DcfParserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-		$this->app->singleton('dcfparser', function ($app)
-		{
-			return new DcfParser();
-		});
-		
-         $this->app->booting(function () {
+        $this->app->singleton('dcfparser', function ($app) {
+            return new DcfParser();
+        });
+        
+        $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('DcfParser', DcfParserFacade::class);
         });
@@ -55,6 +54,4 @@ class DcfParserServiceProvider extends ServiceProvider
     {
         return ['dcfparser'];
     }
-
-
 }

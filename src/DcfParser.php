@@ -29,23 +29,23 @@ class DcfParser
      */
     public function parseFile($path)
     {
-        $source = fopen($path,'r');
+        $source = fopen($path, 'r');
         $index = '';
         $data = [];
-        while( ($line = fgets($source)) !== false ){
-            if(preg_match('/^\s*$/', $line))
-              continue 1; // ignore empty lines //
+        while (($line = fgets($source)) !== false) {
+            if (preg_match('/^\s*$/', $line)) {
+                continue 1;
+            } // ignore empty lines //
 
-            if(!preg_match('/^\s+/', $line)) { // if the line does not start with whitespace then it has a new key-value pair //
+            if (!preg_match('/^\s+/', $line)) { // if the line does not start with whitespace then it has a new key-value pair //
                 $items = explode(':', $line, 2); // separate at the first : //
                 $index = strtolower($items[0]); // the keys are case insensitive //
                 $value = preg_replace('/^\s+/', '', $items[1]); // remove extra whitespace from the begining //
                 $value = preg_replace('/\s+$/', '', $value); // and from the end //
-            }
-            else{ // continue the value from the previous line //
+            } else { // continue the value from the previous line //
                 $value = preg_replace('/\s+$/', '', $line); // remove whitespace only from the end //
             }
-            if ( isset($data[$index]) ) {
+            if (isset($data[$index])) {
                 $data[$index] .= $value;
             } else {
                 $data[$index] = $value;
@@ -54,5 +54,4 @@ class DcfParser
         fclose($source);
         return $data;
     }
-
 }
